@@ -17,12 +17,11 @@ type ProductPageProps = {
   params: { id: string };
 };
 
-// Generate dynamic metadata - use explicit types
+// Temporarily comment out generateMetadata to isolate the issue
+/*
 export async function generateMetadata(
   { params }: ProductPageProps
-  // parent: ResolvingMetadata // Optional: access parent metadata if needed
-): Promise<Metadata> { // Explicit return type
-  // Use the real fetch function here too
+): Promise<Metadata> { 
   const watch = await getWatchById(params.id);
   if (!watch) {
     return {
@@ -34,6 +33,7 @@ export async function generateMetadata(
     description: watch.description || `Details for ${watch.brand} ${watch.model}`,
   };
 }
+*/
 
 // Product Page Component - use explicit type
 export default async function ProductPage({ params }: ProductPageProps) {
