@@ -1,0 +1,91 @@
+.adminContainer {
+    padding: 2rem;
+}
+
+.inputGroup {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inputGroup label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+
+.inputGroup input[type="url"] {
+    flex-grow: 1;
+    padding: 0.6em 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.inputGroup button {
+    padding: 0.6em 1.5em;
+    /* Uses default button styles from globals.css */
+}
+
+.errorBox {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #e57373; /* Light red border */
+    background-color: #ffebee; /* Light red background */
+    color: #c62828; /* Darker red text */
+    border-radius: 4px;
+}
+
+.errorBox pre {
+    margin-top: 0.5rem;
+    white-space: pre-wrap; /* Wrap long error messages */
+    word-break: break-all;
+}
+
+.resultBox {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.resultBox h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.resultBox pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 60vh; /* Limit height and make scrollable */
+    overflow: auto;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.resultHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.resultHeader h2 {
+    margin-bottom: 0; /* Remove bottom margin since it's flex */
+}
+
+.copyButton {
+    padding: 0.4em 1em;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    color: #333;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.copyButton:hover {
+    background-color: #ddd;
+    filter: none; /* Override default hover brightness */
+} 

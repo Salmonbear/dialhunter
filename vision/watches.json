@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "brand": "Rolex",
+    "model": "Submariner Date",
+    "reference": "126610LN",
+    "price": 14500,
+    "condition": "Used - Excellent",
+    "year": 2022,
+    "case_material": "Stainless Steel",
+    "case_diameter": "41 mm",
+    "movement": "Automatic",
+    "description": "Iconic Rolex Submariner Date black dial, ceramic bezel. Excellent condition with box and papers.",
+    "image": "placeholder_rolex_sub.jpg"
+  },
+  {
+    "id": 2,
+    "brand": "Omega",
+    "model": "Speedmaster Professional Moonwatch",
+    "price": 6800,
+    "condition": "New",
+    "image": "placeholder_omega_speedy.jpg"
+  },
+  {
+    "id": 3,
+    "brand": "Patek Philippe",
+    "model": "Nautilus",
+    "price": 150000,
+    "condition": "Used - Excellent",
+    "image": "placeholder_patek_nautilus.jpg"
+  },
+  {
+    "id": 4,
+    "brand": "Audemars Piguet",
+    "model": "Royal Oak Selfwinding",
+    "price": 55000,
+    "condition": "Used - Good",
+    "image": "placeholder_ap_royaloak.jpg"
+  },
+   {
+    "id": 5,
+    "brand": "Rolex",
+    "model": "Daytona",
+    "price": 35000,
+    "condition": "Used - Excellent",
+    "image": "placeholder_rolex_daytona.jpg"
+  }
+] 
