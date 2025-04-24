@@ -5,18 +5,29 @@ import Footer from "@/components/Footer";
 import { Watch } from "@/interfaces/Watch";
 import { notFound } from 'next/navigation';
 import { getWatchById } from "@/lib/data"; // Import the real fetch function
+import type { Metadata } from 'next'; // Import Metadata type
 
 // Helper function for price formatting (could be shared)
 const formatPrice = (price: number, currency: string) => {
   return new Intl.NumberFormat('en-GB', { style: 'currency', currency: currency, minimumFractionDigits: 0 }).format(price);
 }
 
-// Generate dynamic metadata - destructure params directly
-export async function generateMetadata({ params }: { params: { id: string } }) {
+// Define the props type explicitly for clarity
+type ProductPageProps = {
+  params: { id: string };
+};
+
+// Generate dynamic metadata - use explicit types
+export async function generateMetadata(
+  { params }: ProductPageProps
+  // parent: ResolvingMetadata // Optional: access parent metadata if needed
+): Promise<Metadata> { // Explicit return type
   // Use the real fetch function here too
   const watch = await getWatchById(params.id);
   if (!watch) {
-    return { title: 'Watch Not Found' };
+    return {
+      title: 'Watch Not Found',
+    };
   }
   return {
     title: `${watch.brand} ${watch.model} - DialHunter`,
@@ -24,8 +35,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-// Product Page Component - destructure params directly
-export default async function ProductPage({ params }: { params: { id: string } }) {
+// Product Page Component - use explicit type
+export default async function ProductPage({ params }: ProductPageProps) {
   // Use the real fetch function
   const watch: Watch | null = await getWatchById(params.id);
 
