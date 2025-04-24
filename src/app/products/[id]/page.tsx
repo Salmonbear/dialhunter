@@ -5,22 +5,24 @@ import Footer from "@/components/Footer";
 import { Watch } from "@/interfaces/Watch";
 import { notFound } from 'next/navigation';
 import { getWatchById } from "@/lib/data"; // Import the real fetch function
-import type { Metadata } from 'next'; // Import Metadata type
+import type { Metadata } from 'next'; // Re-add Metadata import
 
 // Helper function for price formatting (could be shared)
 const formatPrice = (price: number, currency: string) => {
   return new Intl.NumberFormat('en-GB', { style: 'currency', currency: currency, minimumFractionDigits: 0 }).format(price);
 }
 
-// Define the props type explicitly for clarity
-type ProductPageProps = {
+// Define the standard props type for pages in App Router
+type Props = {
   params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// Temporarily comment out generateMetadata to isolate the issue
-/*
+// Generate dynamic metadata - use standard Props type
+// Re-enable the function
 export async function generateMetadata(
-  { params }: ProductPageProps
+  { params }: Props, // Destructure params, searchParams is available if needed
+  // parent: Promise<Metadata> // Optional: access parent metadata
 ): Promise<Metadata> { 
   const watch = await getWatchById(params.id);
   if (!watch) {
@@ -33,10 +35,9 @@ export async function generateMetadata(
     description: watch.description || `Details for ${watch.brand} ${watch.model}`,
   };
 }
-*/
 
-// Product Page Component - use explicit type
-export default async function ProductPage({ params }: ProductPageProps) {
+// Product Page Component - use standard Props type
+export default async function ProductPage({ params }: Props) { // Destructure params, searchParams available if needed
   // Use the real fetch function
   const watch: Watch | null = await getWatchById(params.id);
 
