@@ -35,9 +35,13 @@ export default function AdminPage() {
       // Assuming the API route returns { result: "..." }
       setScrapeResult(JSON.stringify(data.result, null, 2)); // Pretty print JSON
 
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Scraping error:", err);
-      setError(err.message || 'Failed to scrape the URL.');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred while scraping.');
+      }
     } finally {
       setIsLoading(false);
     }

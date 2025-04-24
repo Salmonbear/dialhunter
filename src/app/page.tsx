@@ -21,7 +21,7 @@ const getConditionClass = (condition: string) => {
 
 export default async function Home() {
   // Fetch all watches, but only take the first 4 for the featured section
-  const allWatches = await getAllWatches();
+  const allWatches: Watch[] = await getAllWatches();
   const featuredWatches = allWatches.slice(0, 4);
 
   return (

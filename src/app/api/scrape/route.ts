@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     // Basic validation for URL format (optional but recommended)
     try {
       new URL(targetUrl);
-    } catch (_) {
+    } catch {
       return NextResponse.json({ error: 'Invalid URL format provided.' }, { status: 400 });
     }
 
@@ -60,8 +60,13 @@ export async function POST(request: Request) {
     // Return the result to the client
     return NextResponse.json({ result: responseData });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in /api/scrape route:', error);
-    return NextResponse.json({ error: error.message || 'An unexpected error occurred during scraping.' }, { status: 500 });
+     // Type check the error
+    let errorMessage = 'An unexpected error occurred during scraping.';
+    if (error instanceof Error) {
+        errorMessage = error.message;
+    }
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 } 

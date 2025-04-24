@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
 // Product Page Component
 export default async function ProductPage({ params }: ProductPageProps) {
   // Use the real fetch function
-  const watch = await getWatchById(params.id);
+  const watch: Watch | null = await getWatchById(params.id);
 
   // If watch not found, show 404 page
   if (!watch) {

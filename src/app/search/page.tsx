@@ -34,7 +34,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const priceMax = typeof searchParams?.priceMax === 'string' ? parseInt(searchParams.priceMax, 10) : undefined;
 
   // Fetch filtered watches and unique filter options concurrently
-  const [searchResults, uniqueBrands, uniqueConditions] = await Promise.all([
+  const [fetchedResults, uniqueBrands, uniqueConditions] = await Promise.all([
     getFilteredWatches({
       query,
       brand,
@@ -44,6 +44,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     getUniqueBrands(),
     getUniqueConditions()
   ]);
+
+  // Assign type annotation to the results variable
+  const searchResults: Watch[] = fetchedResults;
 
   return (
     <>
