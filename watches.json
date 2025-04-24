@@ -1,0 +1,20 @@
+[
+  {
+    "brand": "Rolex",
+    "model": "Submariner Date",
+    "reference": "126610LN",
+    "image_url": "https://media.rolex.com/image/upload/q_auto:eco/f_auto/t_v7/c_limit,w_2440/v1/catalogue/2025/upright-c/m126610ln-0001"
+  },
+  {
+    "brand": "Omega",
+    "model": "Speedmaster Professional Moonwatch",
+    "reference": "310.30.42.50.01.001",
+    "image_url": "https://www.omegawatches.com/media/catalog/product/o/m/omega-speedmaster-moonwatch-professional-co-axial-master-chronometer-chronograph-42-mm-31030425004001-portrait-1-9eb5ba.png?w=1440"
+  },
+  {
+    "brand": "Patek Philippe",
+    "model": "Nautilus",
+    "reference": "5711/1A-010",
+    "image_url": "https://watchesoff5th.com/cdn/shop/products/patek-philippe-nautilus-stainless-steel-black-blue-dial-ref57111a-001-822120_1280x.jpg?v=1679412610"
+  }
+] 
