@@ -11,13 +11,8 @@ const formatPrice = (price: number, currency: string) => {
   return new Intl.NumberFormat('en-GB', { style: 'currency', currency: currency, minimumFractionDigits: 0 }).format(price);
 }
 
-// Define component props including params
-interface ProductPageProps {
-  params: { id: string };
-}
-
-// Generate dynamic metadata (optional but good for SEO)
-export async function generateMetadata({ params }: ProductPageProps) {
+// Generate dynamic metadata - destructure params directly
+export async function generateMetadata({ params }: { params: { id: string } }) {
   // Use the real fetch function here too
   const watch = await getWatchById(params.id);
   if (!watch) {
@@ -29,8 +24,8 @@ export async function generateMetadata({ params }: ProductPageProps) {
   };
 }
 
-// Product Page Component
-export default async function ProductPage({ params }: ProductPageProps) {
+// Product Page Component - destructure params directly
+export default async function ProductPage({ params }: { params: { id: string } }) {
   // Use the real fetch function
   const watch: Watch | null = await getWatchById(params.id);
 
