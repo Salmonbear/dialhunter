@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Watch } from "@/interfaces/Watch";
 import { notFound } from 'next/navigation';
 import { getWatchById } from "@/lib/data"; // Import the real fetch function
-import type { Metadata, NextPage } from 'next'; // Import NextPage type
+import type { Metadata } from 'next'; // Import NextPage type
 
 // Helper function for price formatting (could be shared)
 const formatPrice = (price: number, currency: string) => {
@@ -18,26 +18,19 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-// Generate dynamic metadata - use standard Props type
-// Re-enable the function
+// generateMetadata - Return static metadata as a workaround
 export async function generateMetadata(
-  { params }: Props, // Destructure params, searchParams is available if needed
-  // parent: Promise<Metadata> // Optional: access parent metadata
+  { params }: Props,
 ): Promise<Metadata> { 
-  const watch = await getWatchById(params.id);
-  if (!watch) {
-    return {
-      title: 'Watch Not Found',
-    };
-  }
+  // Remove data fetching: const watch = await getWatchById(params.id);
   return {
-    title: `${watch.brand} ${watch.model} - DialHunter`,
-    description: watch.description || `Details for ${watch.brand} ${watch.model}`,
-  };
+      title: `Watch Details - DialHunter`, // Static title
+      description: `View details for watch ID ${params.id}`, // Static description using ID
+    };
 }
 
-// Product Page Component - use explicit type AND NextPage type
-const ProductPage: NextPage<Props> = async ({ params }) => {
+// Product Page Component - Make async again
+export default async function ProductPage({ params }: Props) { 
   const watch: Watch | null = await getWatchById(params.id);
 
   // If watch not found, show 404 page
@@ -101,6 +94,4 @@ const ProductPage: NextPage<Props> = async ({ params }) => {
       <Footer />
     </>
   );
-};
-
-export default ProductPage; 
+} 
