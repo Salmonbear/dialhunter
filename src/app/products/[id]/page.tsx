@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Watch } from "@/interfaces/Watch";
 import { notFound } from 'next/navigation';
 import { getWatchById } from "@/lib/data"; // Import the real fetch function
-import type { Metadata } from 'next'; // Re-add Metadata import
+import type { Metadata, NextPage } from 'next'; // Import NextPage type
 
 // Helper function for price formatting (could be shared)
 const formatPrice = (price: number, currency: string) => {
@@ -36,9 +36,8 @@ export async function generateMetadata(
   };
 }
 
-// Product Page Component - use standard Props type
-export default async function ProductPage({ params }: Props) { // Destructure params, searchParams available if needed
-  // Use the real fetch function
+// Product Page Component - use explicit type AND NextPage type
+const ProductPage: NextPage<Props> = async ({ params }) => {
   const watch: Watch | null = await getWatchById(params.id);
 
   // If watch not found, show 404 page
@@ -102,4 +101,6 @@ export default async function ProductPage({ params }: Props) { // Destructure pa
       <Footer />
     </>
   );
-} 
+};
+
+export default ProductPage; 
