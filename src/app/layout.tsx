@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Script from 'next/script';
+import { PHProvider } from './providers'; // Import PostHog provider
 // Remove Geist font imports
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -31,18 +33,25 @@ export default function RootLayout({
       {/* Remove font variables from body className */}
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-796920049"></script>
-        <script>
+        {/* Google tag (gtag.js) using next/script */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-796920049"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+        >
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-
             gtag('config', 'AW-796920049');
           `}
-        </script>
-        {children}
+        </Script>
+        <PHProvider> {/* Wrap children with PostHog provider */}
+          {children}
+        </PHProvider>
       </body>
     </html>
   );
