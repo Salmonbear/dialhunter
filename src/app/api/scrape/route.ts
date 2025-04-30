@@ -1,72 +1,71 @@
 import { NextResponse } from 'next/server';
+// Removed Cheerio and SrpProductInfo imports as they are not used
+
+// Removed parkersSelectors as parsing is removed
 
 export async function POST(request: Request) {
-  const apiKey = process.env.SCRAPINGBEE_API_KEY;
+    const apiKey = process.env.SCRAPINGBEE_API_KEY;
 
-  if (!apiKey) {
-    console.error('ScrapingBee API key not found in environment variables.');
-    return NextResponse.json({ error: 'Server configuration error: API key missing.' }, { status: 500 });
-  }
-
-  try {
-    const body = await request.json();
-    const targetUrl = body.url;
-
-    if (!targetUrl || typeof targetUrl !== 'string') {
-      return NextResponse.json({ error: 'URL is required in the request body.' }, { status: 400 });
+    if (!apiKey) {
+        console.error('ScrapingBee API key not found.');
+        return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
     }
 
-    // Basic validation for URL format (optional but recommended)
     try {
-      new URL(targetUrl);
-    } catch {
-      return NextResponse.json({ error: 'Invalid URL format provided.' }, { status: 400 });
-    }
+        // --- Get URL from Request Body ---
+        const { url: targetUrl }: { url: string } = await request.json();
 
-    console.log(`Attempting to scrape URL: ${targetUrl}`);
+        if (!targetUrl || typeof targetUrl !== 'string') {
+            return NextResponse.json({ error: 'URL is required' }, { status: 400 });
+        }
 
-    // --- Call ScrapingBee API --- 
-    // Adjust parameters based on ScrapingBee documentation and your needs
-    const params = new URLSearchParams({
-      api_key: apiKey,
-      url: targetUrl,
-      // Add other parameters as needed, e.g.:
-      // render_js: 'true', 
-      // block_resources: 'false' 
-    });
-
-    const scrapingBeeUrl = `https://app.scrapingbee.com/api/v1/?${params.toString()}`;
-
-    const scrapingResponse = await fetch(scrapingBeeUrl);
-
-    console.log(`ScrapingBee response status for ${targetUrl}: ${scrapingResponse.status}`);
-
-    if (!scrapingResponse.ok) {
-        let errorBody = 'Failed to fetch from ScrapingBee';
         try {
-             // Try to parse error from ScrapingBee response
-            const beeError = await scrapingResponse.json();
-            errorBody = beeError.message || beeError.error || JSON.stringify(beeError);
-        } catch { /* Ignore parsing error */ }
-        
-      throw new Error(`ScrapingBee API error (${scrapingResponse.status}): ${errorBody}`);
+            new URL(targetUrl);
+        } catch {
+            return NextResponse.json({ error: 'Invalid URL format' }, { status: 400 });
+        }
+
+        console.log(`Attempting simple fetch for: ${targetUrl}`);
+
+        // --- Call ScrapingBee API ---
+        const params = new URLSearchParams({
+            api_key: apiKey,
+            url: targetUrl,
+            render_js: 'true', // Keep JS rendering enabled
+        });
+        const scrapingBeeUrl = `https://app.scrapingbee.com/api/v1/?${params.toString()}`;
+        const scrapingResponse = await fetch(scrapingBeeUrl);
+
+        console.log(`ScrapingBee response status for ${targetUrl}: ${scrapingResponse.status}`);
+
+        if (!scrapingResponse.ok) {
+            let errorBody = 'Failed to fetch from ScrapingBee';
+            try {
+                // Try to get error details from ScrapingBee response if possible
+                const beeError = await scrapingResponse.json(); 
+                errorBody = beeError.message || beeError.error || JSON.stringify(beeError);
+            } catch { 
+                // If response isn't JSON, try getting text
+                try {
+                     errorBody = await scrapingResponse.text();
+                } catch { /* Ignore if text also fails */ }
+            }
+            throw new Error(`ScrapingBee API error (${scrapingResponse.status}): ${errorBody}`);
+        }
+
+        // --- Get Raw HTML Content --- 
+        const htmlResult = await scrapingResponse.text();
+
+        // --- Return Raw HTML in JSON --- 
+        // Mimics the structure from the OG route file
+        return NextResponse.json({ result: htmlResult }); 
+
+    } catch (error: unknown) {
+        console.error('Error in /api/scrape route:', error);
+        let errorMessage = 'An unexpected error occurred during scraping.';
+        if (error instanceof Error) {
+            errorMessage = error.message;
+        }
+        return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
-
-    // --- Process Response --- 
-    // ScrapingBee might return HTML, JSON, or other formats depending on request parameters.
-    // Assuming you want the raw HTML content for now.
-    const responseData = await scrapingResponse.text(); // Use .json() if you expect JSON directly
-
-    // Return the result to the client
-    return NextResponse.json({ result: responseData });
-
-  } catch (error: unknown) {
-    console.error('Error in /api/scrape route:', error);
-     // Type check the error
-    let errorMessage = 'An unexpected error occurred during scraping.';
-    if (error instanceof Error) {
-        errorMessage = error.message;
-    }
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
-  }
 } 

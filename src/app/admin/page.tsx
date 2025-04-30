@@ -18,22 +18,31 @@ export default function AdminPage() {
     setScrapeResult(null);
 
     try {
-      const response = await fetch('/api/scrape', {
+      // Call the generic /api/scrape endpoint again
+      const response = await fetch('/api/scrape', { // <-- Reverted Endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url: urlToScrape }),
+        // Send only the URL
+        body: JSON.stringify({ url: urlToScrape }), // <-- Reverted Body
       });
 
+      // Basic error check - expects JSON response
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+        let errorMsg = `HTTP error! status: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMsg = errorData.error || JSON.stringify(errorData);
+        } catch (parseError) {
+          console.error("Failed to parse error response as JSON:", parseError);
+        }
+        throw new Error(errorMsg);
       }
 
+      // Expect *any* JSON data and display it
       const data = await response.json();
-      // Assuming the API route returns { result: "..." }
-      setScrapeResult(JSON.stringify(data.result, null, 2)); // Pretty print JSON
+      setScrapeResult(JSON.stringify(data, null, 2)); // Display raw JSON
 
     } catch (err: unknown) {
       console.error("Scraping error:", err);
