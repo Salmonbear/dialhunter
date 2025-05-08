@@ -76,7 +76,7 @@
         "additional_information": "Non-Omega strap"
       }
     },
-        {
+    {
       "supplierURL": "https://parkersjewellers.co.uk/shop/omega-seamaster-planet-ocean-600m-2201-50-00/",
       "imageURLs": [
         "https://parkersjewellers.co.uk/wp-content/uploads/2025/04/Planet-Ocean-Second-scaled.jpg",
@@ -314,6 +314,146 @@
         "water_resistance": "600m",
         "dial": "Black",
         "bezel": "Locking bi-directional rotating bezel"
+      }
+    },
+    {
+      "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300-midi-ref-212-30-36-61-01-001-2010-box-papers-service-papers/",
+      "imageURLs": [],
+      "title": "Omega SEAMASTER DIVER 300 MIDI REF 212.30.36.61.01.001 (2010) BOX, PAPERS, SERVICE PAPERS",
+      "price": "£1995",
+      "availability": "In stock",
+      "description": "Complete with box, papers and recent service papers. 12-month dealer warranty.",
+      "productID": "212.30.36.61.01.001_WOD_1",
+      "categories": ["Omega", "Seamaster"],
+      "tags": ["omega", "seamaster"],
+      "specifications": {
+        "brand": "Omega",
+        "series": "Seamaster Diver 300",
+        "model": "Seamaster Diver 300 MIDI",
+        "year": "2010",
+        "box": "Yes",
+        "papers": "Yes",
+        "case_material": "Stainless Steel",
+        "case_size": "36mm",
+        "bracelet_material": "Stainless Steel",
+        "dial": "Black",
+        "movement": "Quartz",
+        "gender": "Gents / Unisex",
+        "condition": "Excellent",
+        "warranty_months": 12,
+        "seller_return_policy": "14-day returns (dealer site)"
+      }
+    },
+    {
+      "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300m-ref-212-30-41-20-01-003-2012-box-and-papers-2/",
+      "imageURLs": [],
+      "title": "Omega SEAMASTER DIVER 300M REF 212.30.41.20.01.003 (2012) BOX AND PAPERS",
+      "price": "£3295",
+      "availability": "In stock",
+      "description": "Full set Diver 300M, black dial, freshly serviced, 12-month warranty.",
+      "productID": "212.30.41.20.01.003_WOD_1",
+      "categories": ["Omega", "Seamaster"],
+      "tags": ["omega", "seamaster"],
+      "specifications": {
+        "brand": "Omega",
+        "series": "Seamaster Diver 300M",
+        "model": "Seamaster Diver 300M",
+        "year": "2012",
+        "box": "Yes",
+        "papers": "Yes",
+        "case_material": "Stainless Steel",
+        "case_size": "41mm",
+        "bracelet_material": "Stainless Steel",
+        "dial": "Black",
+        "movement": "Automatic",
+        "gender": "Gents",
+        "condition": "Mint",
+        "warranty_months": 12,
+        "seller_return_policy": "14-day returns (dealer site)"
+      }
+    },
+    {
+      "supplierURL": "https://watchesofdistinction.com/product/omega-speedmaster-moonwatch-ref-145-022-1978/",
+      "imageURLs": [],
+      "title": "Omega SPEEDMASTER MOONWATCH REF 145.022 (1978)",
+      "price": "£6995",
+      "availability": "In stock",
+      "description": "Fresh-serviced vintage Speedy with attractive faded bezel; box & 12-month warranty.",
+      "productID": "145.022_WOD_1",
+      "categories": ["Omega", "Speedmaster"],
+      "tags": ["omega", "speedmaster", "vintage"],
+      "specifications": {
+        "brand": "Omega",
+        "series": "Speedmaster Moonwatch",
+        "model": "Speedmaster Professional",
+        "year": "1978",
+        "box": "Yes",
+        "papers": "No",
+        "case_material": "Steel",
+        "case_size": "42mm",
+        "bracelet_material": "Steel",
+        "dial": "Chocolate (faded black)",
+        "movement": "Manual",
+        "gender": "Gents",
+        "condition": "Mint (fresh service)",
+        "warranty_months": 12,
+        "seller_return_policy": "14-day returns (dealer site)"
+      }
+    },
+    {
+      "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300m-james-bond-ref-22208000-2009-box-and-papers/",
+      "imageURLs": [],
+      "title": "Omega SEAMASTER DIVER 300M 'JAMES BOND' REF 22208000 (2009) BOX AND PAPERS",
+      "price": "£3895",
+      "availability": "In stock",
+      "description": "Casino Royale Bond variant; full set, recently serviced, 12-month warranty.",
+      "productID": "22208000_WOD_1",
+      "categories": ["Omega", "Seamaster"],
+      "tags": ["omega", "seamaster"],
+      "specifications": {
+        "brand": "Omega",
+        "series": "Seamaster Diver 300M",
+        "model": "Seamaster 300M 'James Bond'",
+        "year": "2009",
+        "box": "Yes",
+        "papers": "Yes",
+        "case_material": "Stainless Steel",
+        "case_size": "41mm",
+        "bracelet_material": "Stainless Steel",
+        "dial": "Blue",
+        "movement": "Automatic",
+        "gender": "Gents",
+        "condition": "Excellent",
+        "warranty_months": 12,
+        "seller_return_policy": "14-day returns (dealer site)"
+      }
+    },
+    {
+      "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-aqua-terra-150m-ref-220-12-41-21-03-002-2022-full-set/",
+      "imageURLs": [],
+      "title": "Omega SEAMASTER AQUA TERRA 150M REF 220.12.41.21.03.002 (2022) FULL SET",
+      "price": "£4295",
+      "availability": "In stock",
+      "description": "Blue \"teak\" dial, Master Chronometer calibre 8900, full set with warranty to 2027.",
+      "productID": "220.12.41.21.03.002_WOD_1",
+      "categories": ["Omega", "Seamaster"],
+      "tags": ["omega", "seamaster", "aqua terra"],
+      "specifications": {
+        "brand": "Omega",
+        "series": "Seamaster Aqua Terra",
+        "model": "Aqua Terra 150M",
+        "year": "2022",
+        "box": "Yes",
+        "papers": "Yes",
+        "case_material": "Stainless Steel",
+        "case_size": "41mm",
+        "bracelet_material": "Rubber strap",
+        "dial": "Blue teak",
+        "movement": "Calibre 8900 Automatic (METAS Master Chronometer)",
+        "gender": "Gents",
+        "condition": "Mint",
+        "warranty_months": 24,
+        "seller_return_policy": "14-day returns (dealer site)"
       }
     }
   ]

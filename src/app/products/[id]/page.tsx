@@ -1,97 +1,125 @@
-import Image from "next/image";
-import Link from "next/link";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Watch } from "@/interfaces/Watch";
+'use client'; // Mark as Client Component due to styled-jsx
 import { notFound } from 'next/navigation';
-import { getWatchById } from "@/lib/data"; // Import the real fetch function
-import type { Metadata } from 'next'; // Import NextPage type
+import Link from 'next/link'; // Import Link
+import WatchProductDisplay_COMPONENT from '@/components/WatchProductDisplay';
+import Header_COMPONENT from '@/components/Header'; // Assuming a shared Header component exists
+import Footer_COMPONENT from '@/components/Footer'; // Assuming a shared Footer component exists
+// Adjust path to be relative from the src directory, or ensure tsconfig paths handle @/data/
+import watchDataJson from '../../../../data/watches.json'; // Corrected path
 
-// Helper function for price formatting (could be shared)
-const formatPrice = (price: number, currency: string) => {
-  return new Intl.NumberFormat('en-GB', { style: 'currency', currency: currency, minimumFractionDigits: 0 }).format(price);
+interface RawWatchProduct {
+  supplierURL?: string;
+  imageURLs?: string[];
+  title: string;
+  price?: string;
+  availability?: string;
+  description?: string;
+  productID: string;
+  categories?: string[];
+  tags?: string[];
+  specifications: {
+    gender?: string;
+    condition?: { [key: string]: string } | string;
+    brand?: string; // Added brand here as it's in specifications in the JSON
+    model?: string;
+    year?: string;
+    box?: string;
+    papers?: string;
+    case_material?: string;
+    case_size?: string;
+    bracelet_material?: string;
+    dial?: string;
+    movement?: string;
+    [key: string]: any;
+  };
 }
 
-// Define the standard props type for pages in App Router
-type Props = {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+interface WatchProduct {
+  id: string;
+  title: string;
+  brandName: string;
+  price?: string;
+  imageUrl?: string;
+  description?: string;
+  specifications?: RawWatchProduct['specifications']; // Use the same type
+  imageURLs?: string[];
+  supplierURL?: string;
+}
 
-// generateMetadata - Return static metadata as a workaround
-export async function generateMetadata(
-  { params }: Props,
-): Promise<Metadata> { 
-  // Remove data fetching: const watch = await getWatchById(params.id);
+const typedWatchData: { products: RawWatchProduct[] } = watchDataJson as { products: RawWatchProduct[] };
+
+async function getWatchById(id: string): Promise<WatchProduct | null> {
+  const product = typedWatchData.products.find((p: RawWatchProduct) => p.productID === id); // Added type for p
+  if (!product) {
+    return null;
+  }
   return {
-      title: `Watch Details - DialHunter`, // Static title
-      description: `View details for watch ID ${params.id}`, // Static description using ID
-    };
+    id: product.productID,
+    title: product.title,
+    brandName: product.specifications.brand || 'N/A', 
+    price: product.price,
+    imageUrl: product.imageURLs && product.imageURLs.length > 0 ? product.imageURLs[0] : undefined,
+    description: product.description,
+    specifications: product.specifications,
+    imageURLs: product.imageURLs,
+    supplierURL: product.supplierURL
+  };
 }
 
-// Product Page Component - Make async again
-export default async function ProductPage({ params }: Props) { 
-  const watch: Watch | null = await getWatchById(params.id);
+interface ProductPageProps {
+  params: {
+    id: string; 
+  };
+}
 
-  // If watch not found, show 404 page
+export default async function ProductPage({ params }: ProductPageProps) {
+  const watch = await getWatchById(params.id);
+
   if (!watch) {
-    notFound();
+    notFound(); 
   }
 
   return (
     <>
-      <Header />
-      <main className="product-page">
-        <div className="product-image">
-          <Image
-            src={watch.image}
-            alt={`${watch.brand} ${watch.model}`}
-            width={600} // Adjust width as needed
-            height={600} // Adjust height for 1:1 ratio
-            priority // Prioritize loading main product image
-            style={{ objectFit: "cover" }}
-          />
+      <Header_COMPONENT />
+      <main className="product-page-container">
+        <div className="back-to-results-link-container">
+          <Link href="/search-results" className="back-to-results-link">
+            &larr; Back to results
+          </Link>
         </div>
-        <div className="product-details">
-          <h1>{watch.brand}</h1>
-          <h2>{watch.model}</h2>
-          {watch.reference && <p className="reference">Ref: {watch.reference}</p>}
-
-          <hr />
-
-          <h3><span className="icon">ⓘ</span> Details</h3>
-          <ul className="details-list">
-            <li><span>Condition:</span> <strong>{watch.condition}</strong></li>
-            {watch.year && <li><span>Year:</span> <strong>{watch.year}</strong></li>}
-            {watch.case_material && <li><span>Case Material:</span> <strong>{watch.case_material}</strong></li>}
-            {watch.case_diameter && <li><span>Case Diameter:</span> <strong>{watch.case_diameter}</strong></li>}
-            {watch.movement && <li><span>Movement:</span> <strong>{watch.movement}</strong></li>}
-             {watch.listingSource && <li><span>Source:</span> <strong>{watch.listingSource}</strong></li>}
-             {watch.dealerName && <li><span>Dealer:</span> <strong>{watch.dealerName}</strong></li>}
-          </ul>
-
-          {watch.description && (
-            <>
-              <hr />
-              <h3><span className="icon">📄</span> Description</h3>
-              <p>{watch.description}</p>
-            </>
-          )}
-
-          <div className="price-contact">
-            <p className="price">{formatPrice(watch.price, watch.currency)}</p>
-             {/* Link to dealer URL if available, otherwise just a button */}
-            {watch.dealerURL && watch.dealerURL !== '#' ? (
-                <Link href={watch.dealerURL} target="_blank" rel="noopener noreferrer" className="contact-seller">
-                    Contact Seller / Make Offer
-                </Link>
-            ) : (
-                <button className="contact-seller">Contact Seller / Make Offer</button>
-            )}
-          </div>
-        </div>
+        <WatchProductDisplay_COMPONENT watch={watch} />
       </main>
-      <Footer />
+      <Footer_COMPONENT />
+      <style jsx global>{`
+        .product-page-container {
+          /* You might want to add some overall padding or max-width here if not handled by individual components */
+        }
+        .back-to-results-link-container {
+          max-width: 1000px; /* Align with WatchProductDisplay max-width */
+          margin: 0 auto; /* Center it if content is narrower */
+          padding: 15px 15px 0px 15px; /* Padding around the link, none at bottom */
+        }
+        .back-to-results-link {
+          display: inline-block;
+          margin-bottom: 10px; /* Space below the link */
+          color: #007bff;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95em;
+        }
+        .back-to-results-link:hover {
+          text-decoration: underline;
+        }
+      `}</style>
     </>
   );
-} 
+}
+
+// Optional: If you want to pre-render these pages at build time (Static Site Generation - SSG)
+// export async function generateStaticParams() {
+//   const products = typedWatchData.products;
+//   return products.map(product => ({
+//     id: product.productID,
+//   }));
+// } 
