@@ -29,6 +29,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'img.chrono24.com',
+        port: '',
+        pathname: '/images/uhren/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'www.omegawatches.com',
         port: '',
         pathname: '/media/catalog/product/**', 
@@ -44,6 +50,12 @@ const nextConfig = {
         hostname: 'cdn.shopify.com',
         port: '',
         pathname: '/s/files/**', 
+      },
+      {
+        protocol: 'https',
+        hostname: 'watchesofdistinction.com',
+        port: '',
+        pathname: '/wp-content/uploads/**', 
       },
     ],
   },

@@ -29,7 +29,7 @@ interface WatchProduct {
   supplierURL?: string;
 
   // MVP Fields from new image context
-  price_delta_text?: string; // e.g., "Fair -3% vs 6-mo median (WatchCharts)"
+  price_delta_text?: string; // e.g., "Fair -3% vs 6-mo median"
   has_seller_warranty?: boolean;
   warranty_details?: string; // e.g., "12-mo warranty"
   return_policy_summary?: string; // e.g., "14-day returns"
@@ -76,7 +76,7 @@ const WatchProductDisplay: React.FC<WatchProductDisplayProps> = ({ watch }) => {
   // Placeholder data merging for UI development, based on new image
   const displayWatch = {
     ...watch,
-    price_delta_text: watch.price_delta_text || "Fair -3% vs 6-mo median (WatchCharts)",
+    price_delta_text: watch.price_delta_text || "Fair -3% vs 6-mo median",
     has_seller_warranty: watch.has_seller_warranty === undefined ? true : watch.has_seller_warranty,
     warranty_details: watch.warranty_details || "12-mo warranty",
     // Example: Constructing a more iconic seller trust summary

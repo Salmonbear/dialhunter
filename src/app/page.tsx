@@ -31,9 +31,9 @@ export default async function Home() {
         <section className="hero">
           <h1>Find Your Next Luxury Timepiece</h1>
           <p>Search thousands of pre-owned luxury watches from trusted sellers worldwide.</p>
-          <form className="search-bar" action="/search" method="GET">
+          <form className="search-bar" action="/search-results" method="GET">
             <input type="search" name="query" placeholder="Search by brand, model, or reference..." />
-            <button type="submit">Search</button>
+            <button type="submit" className="button-primary">Search</button>
           </form>
         </section>
 

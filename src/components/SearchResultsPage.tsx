@@ -269,7 +269,18 @@ const SearchResultsPage: React.FC<SearchResultsPageProps> = ({ initialQuery }) =
               <Link key={item.id} href={`/products/${item.id}`} passHref legacyBehavior>
                 <a className="result-card-link">
                   <div className="result-card">
-                    {item.imageUrl && <img src={item.imageUrl} alt={item.title} className="result-card-image" />}
+                    {item.imageUrl && <img 
+                        src={item.imageUrl} 
+                        alt={item.title} 
+                        className="result-card-image" 
+                        onError={(e) => {
+                            const target = e.currentTarget as HTMLImageElement;
+                            // Prevent infinite loop if placeholder itself is broken
+                            if (target.src !== window.location.origin + "/placeholder.jpg") {
+                                target.src = "/placeholder.jpg"; 
+                            }
+                        }}
+                    />}
                     <div className="result-card-info">
                       <span className="result-card-brand">{item.brandName}</span>
                       {item.price && <span className="result-card-price">{item.price}</span>}
@@ -393,21 +404,27 @@ const SearchResultsPage: React.FC<SearchResultsPageProps> = ({ initialQuery }) =
         .nav-links a:hover, .nav-links button:hover {
           color: #007bff;
         }
+        .header-search-form {
+          flex-grow: 1;
+          margin-right: 15px;
+          display: flex;
+        }
         .header-search-input {
           padding: 8px 12px;
           border: 1px solid #ccc;
-          border-radius: 4px;
+          border-radius: 4px 0 0 4px;
           font-size: 0.9em;
-          min-width: 250px; /* Give search input more space */
-          margin-right: 5px;
+          flex-grow: 1;
+          margin-right: 0;
         }
         .header-search-button {
           padding: 8px 15px;
           background-color: #007bff;
           color: white;
           border: none;
-          border-radius: 4px;
+          border-radius: 0 4px 4px 0;
           cursor: pointer;
+          margin-left: -1px;
         }
         .header-search-button:hover {
           background-color: #0056b3;
@@ -489,11 +506,14 @@ const SearchResultsPage: React.FC<SearchResultsPageProps> = ({ initialQuery }) =
         /* Results Display Area */
         .results-display-area {
           flex-grow: 1; 
+          display: flex;
+          flex-direction: column;
         }
         .results-summary {
           margin-bottom: 15px;
           font-size: 0.9em;
           color: #555;
+          min-height: 1.2em;
         }
         .results-grid {
           display: grid;

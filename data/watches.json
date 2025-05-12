@@ -155,9 +155,7 @@
     {
       "supplierURL": "https://grabawatch.com/products/vintage-omega-seamaster-ref-2648-4sc-automatic-cal-501-mens-watch-1950s-34mm",
       "imageURLs": [
-        "https://grabawatch.com/cdn/shop/files/OMEGA_VINTAGE_GOLDEN_SEAMASTER_CAL.501_1950S_UK_1_720x.jpg",
-        "https://grabawatch.com/cdn/shop/files/OMEGA_VINTAGE_GOLDEN_SEAMASTER_CAL.501_1950S_UK_2_720x.jpg",
-        "https://grabawatch.com/cdn/shop/files/OMEGA_VINTAGE_GOLDEN_SEAMASTER_CAL.501_1950S_UK_3_720x.jpg"
+        "https://grabawatch.com/cdn/shop/files/vintage-omega-seamaster-ref2648-4sc-automatic-cal501-mens-watch-1950s-34mm-760921.jpg"
       ],
       "title": "Vintage Omega Seamaster Ref.2648-4SC Automatic Cal.501 Mens Watch, 1950's, 34mm",
       "price": "£1,195.00 GBP",
@@ -167,7 +165,7 @@
       "categories": ["Wristwatch"],
       "tags": ["vintage", "omega", "seamaster"],
       "specifications": {
-        "brand": "OMEGA",
+        "brand": "Omega",
         "series": "Seamaster",
         "model": "2648-4SC",
         "movement": "Mechanical (Automatic)",
@@ -213,7 +211,7 @@
     {
       "supplierURL": "https://www.chrono24.com/omega/seamaster-300-big-triangle-amp-sword-hands-ref-165024--id39906234.htm",
       "imageURLs": [
-        "https://www.chrono24.com/images/uhren/39906234-1xgk2n5z3w1w2.jpg"
+        "https://img.chrono24.com/images/uhren/39906234-0nrh9bmxysecl884ctjr0y09-MediumLarge.jpg"
       ],
       "title": "Omega Seamaster 300 'Big Triangle' Ref. 165.024",
       "price": "$13,900",
@@ -238,35 +236,9 @@
       }
     },
     {
-      "supplierURL": "https://www.omegawatches.com/en-us/watch-omega-seamaster-300-m-chrono-diver-22988000",
-      "imageURLs": [
-        "https://www.omegawatches.com/media/catalog/product/cache/1/image/800x/040ec09b1e35df139433887a97daa66f/o/m/omega-seamaster-300-m-chrono-diver-22988000-1.jpg"
-      ],
-      "title": "Omega Seamaster Professional 300M Chronograph Ref. 2298.80.00",
-      "price": "N/A",
-      "availability": "N/A",
-      "description": "The Omega Seamaster Professional 300M Chronograph features a 41.5mm titanium case, blue dial with wave pattern, and is powered by the automatic Caliber 1164 movement.",
-      "productID": "2298.80.00",
-      "categories": ["Omega Watches", "Seamaster"],
-      "tags": ["omega", "seamaster", "chronograph", "diver"],
-      "specifications": {
-        "brand": "Omega",
-        "series": "Seamaster Professional 300M",
-        "model": "2298.80.00",
-        "movement": "Automatic",
-        "caliber": "1164",
-        "case_size": "41.5mm",
-        "case_material": "Titanium",
-        "bracelet": "Titanium",
-        "water_resistance": "300m",
-        "dial": "Blue with wave pattern",
-        "bezel": "Unidirectional rotating bezel"
-      }
-    },
-    {
       "supplierURL": "https://www.omegaenthusiastltd.com/product-page/1979-omega-seamaster-120",
       "imageURLs": [
-        "https://static.wixstatic.com/media/8dcd0f_3e9e6e2f1f8b4b6e8f9e8f9e8f9e8f9e~mv2.jpg"
+        "https://static.wixstatic.com/media/dea6ce_f605e8afe79a4ee89ed9931d07507755~mv2.jpg/v1/fill/w_595,h_595,al_c,q_80,enc_avif,quality_auto/dea6ce_f605e8afe79a4ee89ed9931d07507755~mv2.jpg"
       ],
       "title": "Omega Seamaster 120 'Baby Ploprof' Ref. 166.0250",
       "price": "N/A",
@@ -290,35 +262,10 @@
       }
     },
     {
-      "supplierURL": "https://www.craftandtailored.com/products/1971-omega-seamaster-600-166-077-ploprof",
-      "imageURLs": [
-        "https://cdn.shopify.com/s/files/1/0267/8021/9357/products/omega-seamaster-600-166-077-ploprof-1.jpg"
-      ],
-      "title": "Omega Seamaster 600 'Ploprof' Ref. 166.077",
-      "price": "$9,850",
-      "availability": "In stock",
-      "description": "The Omega Seamaster 600 'Ploprof' is a professional-grade dive watch from 1971, featuring a 55mm x 45mm stainless steel case, automatic Caliber 1002 movement, and water resistance up to 600 meters.",
-      "productID": "166.077",
-      "categories": ["Vintage Omega Watches", "Seamaster"],
-      "tags": ["vintage watch", "omega", "seamaster", "diver"],
-      "specifications": {
-        "brand": "Omega",
-        "series": "Seamaster 600",
-        "model": "166.077",
-        "year": "1971",
-        "movement": "Automatic",
-        "caliber": "1002",
-        "case_size": "55mm x 45mm",
-        "case_material": "Stainless steel",
-        "bracelet": "Stainless steel",
-        "water_resistance": "600m",
-        "dial": "Black",
-        "bezel": "Locking bi-directional rotating bezel"
-      }
-    },
-    {
       "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300-midi-ref-212-30-36-61-01-001-2010-box-papers-service-papers/",
-      "imageURLs": [],
+      "imageURLs": [
+        "https://watchesofdistinction.com/wp-content/uploads/13043-1-2048x2048.jpg"
+      ],
       "title": "Omega SEAMASTER DIVER 300 MIDI REF 212.30.36.61.01.001 (2010) BOX, PAPERS, SERVICE PAPERS",
       "price": "£1995",
       "availability": "In stock",
@@ -346,7 +293,9 @@
     },
     {
       "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300m-ref-212-30-41-20-01-003-2012-box-and-papers-2/",
-      "imageURLs": [],
+      "imageURLs": [
+        "https://watchesofdistinction.com/wp-content/uploads/13014-4.jpg"
+      ],
       "title": "Omega SEAMASTER DIVER 300M REF 212.30.41.20.01.003 (2012) BOX AND PAPERS",
       "price": "£3295",
       "availability": "In stock",
@@ -374,7 +323,9 @@
     },
     {
       "supplierURL": "https://watchesofdistinction.com/product/omega-speedmaster-moonwatch-ref-145-022-1978/",
-      "imageURLs": [],
+      "imageURLs": [
+        "https://watchesofdistinction.com/wp-content/uploads/11092-1.jpg"
+      ],
       "title": "Omega SPEEDMASTER MOONWATCH REF 145.022 (1978)",
       "price": "£6995",
       "availability": "In stock",
@@ -402,7 +353,9 @@
     },
     {
       "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-diver-300m-james-bond-ref-22208000-2009-box-and-papers/",
-      "imageURLs": [],
+      "imageURLs": [
+        "https://watchesofdistinction.com/wp-content/uploads/7918-1-2048x2048.jpg"
+      ],
       "title": "Omega SEAMASTER DIVER 300M 'JAMES BOND' REF 22208000 (2009) BOX AND PAPERS",
       "price": "£3895",
       "availability": "In stock",
@@ -430,7 +383,9 @@
     },
     {
       "supplierURL": "https://watchesofdistinction.com/product/omega-seamaster-aqua-terra-150m-ref-220-12-41-21-03-002-2022-full-set/",
-      "imageURLs": [],
+      "imageURLs": [
+        "https://watchesofdistinction.com/wp-content/uploads/11718-1.jpg"
+      ],
       "title": "Omega SEAMASTER AQUA TERRA 150M REF 220.12.41.21.03.002 (2022) FULL SET",
       "price": "£4295",
       "availability": "In stock",
