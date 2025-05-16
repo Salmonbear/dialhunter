@@ -49,6 +49,11 @@ export default function RootLayout({
             gtag('config', 'AW-796920049');
           `}
         </Script>
+        <Script
+          strategy="afterInteractive"
+          data-domain="dialhunter.com"
+          src="https://plausible.io/js/script.js"
+        />
         <PHProvider> {/* Wrap children with PostHog provider */}
           {children}
         </PHProvider>
