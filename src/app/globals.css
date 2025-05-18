@@ -260,23 +260,53 @@ footer {
     padding-bottom: 1rem;
 }
 
-.view-all {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    background: none;
-    border: 1px solid var(--primary-color);
+.watch-card-cta {
+    display: inline-block;
+    margin-top: 0.5rem; /* Space above CTA */
+    margin-bottom: 1rem; /* Space below CTA, aligning with card bottom padding */
+    padding: 0.5em 1em;
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    /* Position it within the padding context of the card */
+    margin-left: 1rem; 
+    margin-right: 1rem;
+    width: calc(100% - 2rem); /* Make it full width respecting card padding */
+}
+
+.watch-card:hover .watch-card-cta {
+    background-color: var(--accent-color); /* Example: Gold on card hover */
     color: var(--primary-color);
-    padding: 0.8em 2em;
+}
+
+.view-all {
+    display: inline-block; /* Default, can be overridden for mobile */
+    padding: 0.8em 1.5em;
+    border: 1px solid var(--primary-color);
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-top: 1rem; /* Space above the button if needed */
+    margin-bottom: 0.5rem; /* Space below the button */
 }
 
 .view-all:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--card-bg);
 }
 
 .secure-info {
-    font-size: 0.9rem;
-    color: #777;
+    font-size: 0.85rem;
+    color: #555;
+    /* text-align: center; is already on .featured-watches parent */
+    margin-top: 0.5rem; /* Keep or adjust space above */
 }
 
 /* Search Page Styles */
@@ -1136,5 +1166,37 @@ footer {
     .footer-content {
         grid-template-columns: 1fr; /* Stack footer columns */
         text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .watch-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax for mobile */
+        gap: 1rem;
+    }
+
+    .featured-watches h2 {
+        font-size: 1.5rem;
+    }
+
+    .view-all {
+        display: block; /* Make button full width */
+        width: 90%; /* Or 100% and adjust padding on parent if needed */
+        max-width: 320px; /* Max width for aesthetics on mobile */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.9em 1em; /* Slightly adjust padding for mobile if needed */
+        font-size: 0.95rem; /* Slightly adjust font for mobile */
+    }
+
+    .secure-info {
+        margin-top: 0.75rem; /* Adjust spacing below full-width button */
+        font-size: 0.8rem;
     }
 }

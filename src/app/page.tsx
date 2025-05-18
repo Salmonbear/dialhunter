@@ -57,10 +57,11 @@ export default async function Home() {
                 </span>
                  {/* Use watch.currency for formatting */}
                 <p className="price">{formatPrice(watch.price, watch.currency)}</p>
+                <span className="watch-card-cta">View Details</span>
               </Link>
             ))}
           </div>
-          <Link href="/search" className="view-all">
+          <Link href="/search-results" className="view-all">
             View All Watches
           </Link>
           <p className="secure-info">🔒 Secure listings from verified sellers</p>
