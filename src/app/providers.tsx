@@ -1,22 +1,20 @@
 'use client'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { PostHogProvider } from 'posthog-js/react'
 import posthog from 'posthog-js'
-import { Suspense } from 'react'
 
 if (typeof window !== 'undefined') {
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://app.posthog.com',
-    // Enable debug mode in development
     loaded: (posthog) => {
       if (process.env.NODE_ENV === 'development') posthog.debug()
     },
-    capture_pageview: false // Disable automatic pageview capture, as we capture manually
+    capture_pageview: false
   })
 }
 
-export function PostHogPageView(): JSX.Element {
+function PostHogPageView(): JSX.Element {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -24,18 +22,23 @@ export function PostHogPageView(): JSX.Element {
     if (pathname) {
       let url = window.origin + pathname
       if (searchParams && searchParams.toString()) {
-        url = url + `?${searchParams.toString()}`
+        url += `?${searchParams.toString()}`
       }
-      posthog.capture(
-        '$pageview',
-        {
-          '$current_url': url,
-        }
-      )
+      posthog.capture('$pageview', {
+        '$current_url': url,
+      })
     }
+
+    const handleBeforeUnload = () => {
+      posthog.capture('$pageleave')
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+
   }, [pathname, searchParams])
 
-  return <></> // Return null or an empty fragment
+  return <></>
 }
 
 export function PHProvider({ children }: { children: React.ReactNode }) {
@@ -47,4 +50,4 @@ export function PHProvider({ children }: { children: React.ReactNode }) {
       </Suspense>
     </PostHogProvider>
   )
-} 
+}
