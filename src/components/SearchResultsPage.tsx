@@ -4,6 +4,7 @@ import Link from 'next/link'; // Import Link from Next.js
 // We can import a shared Header and Footer if they exist, or define them locally/later.
 // import Header from './Header'; 
 // import Footer from './Footer';
+import Header from './Header'; // Import the shared Header component
 
 import watchDataJson from '../../data/watches.json'; // Corrected path from src/components
 
@@ -184,28 +185,7 @@ const SearchResultsPage: React.FC<SearchResultsPageProps> = ({ initialQuery }) =
 
   return (
     <div className="search-results-page">
-      <header className="main-header"> 
-        <nav className="main-nav">
-          <a href="/" className="logo">{platformName}</a> 
-          <div className="nav-links">
-            <a href="/brands">Brands</a>
-            <a href="/pricing">Pricing</a> 
-            <form onSubmit={(e) => { e.preventDefault(); applyFilters(); }} className="header-search-form">
-              <input 
-                type="search" 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search watches, brands..." 
-                className="header-search-input" 
-              />
-              <button type="submit" className="header-search-button">Search</button>
-            </form>
-            {/* <a href="/gb" className="nav-link-country">GB ▼</a> Country selector might be different for watches */}
-            <button className="nav-button-signin">Sign in</button>
-            <button className="nav-button-signup">Sign up</button>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="search-content-area">
         <aside className="filters-sidebar">

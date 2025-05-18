@@ -1,0 +1,95 @@
+/* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff; /* Or your desired background */
+  border-bottom: 1px solid #eaeaea;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000; /* Or your logo color */
+}
+
+.navLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #333;
+}
+
+.navLinksDesktop {
+  display: none; /* Hidden on mobile by default */
+}
+
+.hamburger {
+  display: none; /* Hidden on desktop by default */
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobileMenu {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  position: absolute;
+  top: 56px; /* Align with fixed 56px header height */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  padding: 1rem;
+  z-index: 10;
+  width: 100%; /* Full width for mobile dropdown */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mobileMenu.open {
+  display: flex;
+}
+
+.mobileMenu a {
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mobileMenu a:last-child {
+  border-bottom: none;
+}
+
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .header {
+    height: 56px;
+    padding: 0 1rem; /* Fixed height, only horizontal padding */
+  }
+
+  .navLinksDesktop {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Desktop view */
+@media (min-width: 769px) {
+  .navLinksDesktop {
+    display: flex; /* Show desktop links */
+    align-items: center;
+  }
+  .searchIconDesktop {
+    margin-left: 1rem; /* Space between links and search icon */
+  }
+} 

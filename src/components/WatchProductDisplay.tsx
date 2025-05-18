@@ -123,6 +123,27 @@ const WatchProductDisplay: React.FC<WatchProductDisplayProps> = ({ watch }) => {
           
           {displayWatch.price && <p className="product-price">{displayWatch.price}</p>}
 
+          {displayWatch.supplierURL && 
+            <a href={displayWatch.supplierURL} target="_blank" rel="noopener noreferrer" className="view-listing-button">
+                View Listing on Source
+            </a>
+          }
+
+          {/* Key Specifications Section */}
+          {keySpecs.length > 0 && (
+            <div className="key-specs-section">
+              <h3>At a Glance</h3>
+              <ul className="key-specs-list">
+                {keySpecs.map(spec => (
+                  <li key={spec.label} className="key-spec-item">
+                    <span className="key-spec-label">{spec.label}:</span>
+                    <span className="key-spec-value">{String(spec.value)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Priority 1: Confidence badge + price delta UNDER price */}
           <div className="confidence-section">
             {displayWatch.price_delta_text && (
@@ -177,27 +198,6 @@ const WatchProductDisplay: React.FC<WatchProductDisplayProps> = ({ watch }) => {
               ))}
             </div>
           )}
-
-          {/* Key Specifications Section */}
-          {keySpecs.length > 0 && (
-            <div className="key-specs-section">
-              <h3>At a Glance</h3>
-              <ul className="key-specs-list">
-                {keySpecs.map(spec => (
-                  <li key={spec.label} className="key-spec-item">
-                    <span className="key-spec-label">{spec.label}:</span>
-                    <span className="key-spec-value">{String(spec.value)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          
-          {displayWatch.supplierURL && 
-            <a href={displayWatch.supplierURL} target="_blank" rel="noopener noreferrer" className="view-listing-button">
-                View Listing on Source
-            </a>
-          }
         </div>
       </div>
       
